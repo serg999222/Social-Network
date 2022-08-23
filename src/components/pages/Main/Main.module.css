@@ -1,0 +1,15 @@
+
+	.main{
+		
+		margin: 0 auto;
+	}
+	
+	
+	.ava__block{
+	 display: flex;
+	  
+	}
+	.ava__block img{
+	  width: 200px;
+	  margin-right: 50px;
+	}

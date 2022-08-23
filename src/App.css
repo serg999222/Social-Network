@@ -10,6 +10,11 @@
 }
 
 
+.main__styles{
+	grid-area: m;
+	background-color: rgb(244, 239, 242);
+	}
+
 
 
 

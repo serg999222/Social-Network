@@ -1,0 +1,17 @@
+.postImage{
+	width: 60%;
+	display: block;
+	margin: 0 auto;
+	text-align: center;
+	height: 200px;
+	margin-bottom: 15px;
+	margin-bottom: 15px;
+	
+}
+
+.postAva{
+	display: flex;
+max-width: 300px;
+margin:  0  auto 10px;
+
+}

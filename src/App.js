@@ -1,7 +1,13 @@
+import {BrowserRouter ,Routes, Route } from 'react-router-dom';
 import './App.css';
-import Header from './components/Header';
-import Main from './components/Main';
-import Nav from './components/Nav';
+import Header from './components/Header/Header';
+import Image from './components/pages/Image/Image';
+import Main from './components/pages/Main/Main';
+import Nav from './components/Nav/Nav';
+import Settings from './components/pages/settings/Settings';
+import Frends from './components/pages/frends/Frends';
+import Message from './components/pages/Message/Message';
+import ProfilPage from './components/pages/ProfilPage/ProfilPage';
 
 
 
@@ -10,15 +16,29 @@ import Nav from './components/Nav';
 
 
 
-function App() {
+function App(props) {
   return (
+    <BrowserRouter>
     <div className="App">
       <div className='wrapper'>
         <Header />
         <Nav />
-        <Main />
+        <div className="main__styles">
+             
+        <Routes>
+            <Route path='/*' element={<Main/>} />
+            <Route path='/Image/*' element={<Image/>} />
+            <Route path='/Frends/*' element={<Frends/>} />
+            <Route path='/Message/*' element={<Message userDialogs={props.state.messagePage}/>} />
+            <Route path='/Settings/*' element={<Settings/>} />
+            <Route path='/ProfilPage/*' element={<ProfilPage/>} />
+          </Routes>
+         
+        </div>
       </div>
     </div>
+    </BrowserRouter>
+
   );
 }
 

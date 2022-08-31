@@ -1,17 +1,17 @@
 import React from "react"
-import Ava from "./avaBlock/Ava/Ava"
+import Ava from "./Ava/Ava"
 import s from "./Post.module.css"
-import PostDescription from "./avaBlock/postDescription/PostDescription"
+import PostDescription from "./postDescription/PostDescription"
 
 function Post(props) {
 	return (
 		<div>
-			<img className={s.postImage} src={props.image} alt="" />
+		<div className={s.postImageWrapper}><img className={s.postImage} src={props.image} alt="" /></div>
 			<div className={s.postAva}>
-				<Ava />
+				<Ava avaUser={props.avaUser}/>
 				<p>{props.name}</p>
 			</div>
-			<PostDescription text='Hy this is my photo'/>
+			<PostDescription text={props.text}/>
 			<hr/>
 		</div>
 	)

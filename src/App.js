@@ -26,10 +26,10 @@ function App(props) {
         <div className="main__styles">
              
         <Routes>
-            <Route path='/*' element={<Main/>} />
+            <Route path='/*' element={<Main store={props.store} newsPage={props.state.newsPage} dispatch={props.dispatch}/>} />
             <Route path='/Image/*' element={<Image/>} />
             <Route path='/Frends/*' element={<Frends/>} />
-            <Route path='/Message/*' element={<Message userDialogs={props.state.messagePage}/>} />
+            <Route path='/Message/*' element={<Message userDialogs={props.state.messagePage} dispatch={props.dispatch} />} />
             <Route path='/Settings/*' element={<Settings/>} />
             <Route path='/ProfilPage/*' element={<ProfilPage/>} />
           </Routes>

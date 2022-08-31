@@ -1,20 +1,23 @@
 import React from "react";
 import s from './Main.module.css'
-import PostForm from './Posts/PostForm/PostForm'
+import PostFormContainer from './Posts/PostForm/PostFormContainer'
 import Post from './Posts/Post/Post'
 
 
-function Main() {
+
+
+function Main(props) {
+
+	let post = props.newsPage.posts.map( itemPost => <Post image = {itemPost.image} name = {itemPost.name} text={itemPost.text} avaUser={itemPost.avaUser}/>)
+
 	return (
 		<main className={s.main}>
-			<PostForm />
+			<PostFormContainer store={props.store} />
 			<hr />
 
 			<div>
 				
-				<Post name='dima' image="https://cdn.arstechnica.net/wp-content/uploads/2016/02/5718897981_10faa45ac3_b-640x624.jpg" />
-				<Post name='roma' />
-				<Post name='5' />
+				{post}
 
 			</div>
 		</main>

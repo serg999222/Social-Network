@@ -1,17 +1,25 @@
-.postImage{
-	width: 60%;
+.postImageWrapper{
 	display: block;
 	margin: 0 auto;
 	text-align: center;
-	height: 200px;
 	margin-bottom: 15px;
 	margin-bottom: 15px;
+	background-size: cover;
+	width: 30%;
+	height: 150px;
+	overflow: hidden;
+
+}
+
+.postImage{
+width: 100%;
+height: 100%;
 	
 }
 
 .postAva{
 	display: flex;
-max-width: 300px;
-margin:  0  auto 10px;
+	max-width: 300px;
+	margin:  0  auto 10px;
 
 }

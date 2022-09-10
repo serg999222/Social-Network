@@ -1,41 +1,38 @@
 import React from "react";
 import s from "./PostForm.module.css"
-import {addPostActionCreator} from '../../../../../redux/newsPage-reduser'
-import {updateNewPostTextCreator} from '../../../../../redux/newsPage-reduser'
 
 
 
 
 
-function PostForm(props) {
-
-	let addPostRef = React.createRef()
-	
-	
+class PostForm extends React.Component{
 
 
- 
-let addPostt = (e) => {	
-	
-	props.addPostt(e)
+
+	addPostt = (e) => {	
+		e.preventDefault()
+		this.props.addPostt()
+		
+	}
+
+	onPostChange = (e) => {
+		
+		let text = e.target.value
+		this.props.onPostChange(text)
+		
+	}
+
+	render(){
+		return (
+			<form>
+				<input onChange={this.onPostChange}  value={this.props.newPostText}/> <br />
+				<button onClick={this.addPostt} type='submit'>Add Post</button>
+			</form>
+)
+	}
 }
 
-let onPostChange = ()=>{
-	let text = addPostRef.current.value
-	props.onPostChange(text)
-	
-}
-	
 
-
-
-	return (
-				<form>
-					<input onChange={onPostChange}  ref={addPostRef} value={props.newPostText}/> <br />
-					<button onClick={addPostt} type='submit'>Add Post</button>
-				</form>
-	)
-}
 
 export default PostForm
 

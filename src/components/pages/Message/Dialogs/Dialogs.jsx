@@ -10,7 +10,7 @@ function isActive() {
 const Dialogs = (props) => {
 	return (
 		<li>
-			<NavLink className={isActive()} to={props.adress}>{props.name}</NavLink>
+			<NavLink className={isActive()} to={props.adress}>{props.name} {props.in+1} </NavLink>
 		</li>
 	)
 }

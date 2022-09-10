@@ -2,13 +2,18 @@ import React from "react";
 import s from './Image.module.css'
 
 
-function Image() {
-	return (
-		<div className={s.container}>
-			Image Page
-		</div>
-	)
+class Image extends React.Component{
+
+	render(){
+		return (
+			<div className={s.container}>
+				Image Page
+			</div>
+		)
+	}
 }
+
+
 
 export default Image
 

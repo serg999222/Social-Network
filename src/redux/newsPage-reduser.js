@@ -22,16 +22,17 @@ export const updateNewPostTextCreator = (text) => ({type: UPDATE_NEW_POST_TEXT, 
 const newsPageReduser = (state = initialState, action) => {
 	switch(action.type){
 		case UPDATE_NEW_POST_TEXT:
-			state.newPostText = action.textt
-			return state
-		case ADD_POST:
-			let newPost = {
-				id:4, image:'', name:'saha', text:state.newPostText , avaUser:''
+			return{
+				...state,
+				newPostText: action.textt
 			}
-			state.newPostText = ''
-			state.posts.unshift(newPost)
-			
-			return state
+
+		case ADD_POST:
+			return{
+				...state,
+				posts: [ {id:4, image:'', name:'saha', text: state.newPostText , avaUser:''}, ...state.posts ],
+				newPostText: ''
+			}			
 			
 		default:
 			return state

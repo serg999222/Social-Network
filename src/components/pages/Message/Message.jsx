@@ -2,15 +2,15 @@ import React from "react";
 import s from './Message.module.css'
 import Dialogs from './Dialogs/Dialogs'
 import Messages from "./Messages/Messages";
-import {addMessageActionCreator} from '../../../redux/messagePage-reduser'
-import {updateNewMessageTextActionCreator} from '../../../redux/messagePage-reduser'
+
 
 
 function Message(props) {
+
 	let changeMessageRef = React.createRef()
 
-	let massage = props.userDialogs.messages.map(massage => <Messages text={massage.text} />)
-	let usersDialog = props.userDialogs.userDialogs.map(item => <Dialogs name={item.name} adress={item.id} />)
+	let massage = props.messages.map((massage, index) => <Messages text={massage.text} key={index} />)
+	let usersDialog = props.userDialogs.map((item , index) => <Dialogs name={item.name} adress={item.id} key={index} in={index}/>)
 
 
 
@@ -18,13 +18,14 @@ function Message(props) {
 	let addMessage = (e) =>{
 		e.preventDefault()
 		let text = changeMessageRef.current.value
-		props.dispatch(addMessageActionCreator(text))
+		props.addMessage(text)
 		changeMessageRef.current.value = ''
+		
 	}
 
 	let onMessageChange = (e) =>{
 		let text = e.target.value
-		props.dispatch(updateNewMessageTextActionCreator(text))
+		props.onMessageChange(text)
 	}
 
 

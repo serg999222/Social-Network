@@ -2,11 +2,13 @@ import { configureStore } from '@reduxjs/toolkit'
 import {combineReducers, createStore} from 'redux'
 import newsPageReduser from './newsPage-reduser'
 import messagePageReduser from './messagePage-reduser'
+import frendsPageReduser from './frendsPage-reduser'
 
 
 let redusers =  combineReducers({
 	newsPage: newsPageReduser,
-	messagePage: messagePageReduser
+	messagePage: messagePageReduser,
+	frendsPage: frendsPageReduser
 }) 
 
 let store = createStore(redusers)

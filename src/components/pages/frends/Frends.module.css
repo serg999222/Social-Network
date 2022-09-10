@@ -1,5 +1,60 @@
 .container{
 font-weight: 800;
-font-size: 50px;
+font-size: 18px;
 background-color: rgb(37, 159, 183);
 }
+
+.sercherContainer{
+	padding-top: 20px;
+	
+}
+
+.input{
+	display: block;
+	height: 40px;
+	margin: 0px auto;
+	border-radius: 10px;
+	font-size: 18px;
+}
+
+.listsFlexContainer{
+	
+	display: flex;
+	justify-content: space-between;
+}
+
+.frends{
+	padding-top: 20px;
+	background-color: rgb(88, 140, 195);
+	width: 60%;
+	list-style: none;
+	border-right: 2px solid black;
+}
+.frends img{
+		width: 50px;
+		height: auto;
+		border-radius: 50%;
+}
+.users{
+	padding-top: 20px;
+	background-color: rgb(55, 137, 160);
+	width: 40%;
+	list-style: none;
+
+	}
+	.users img{
+		width: 50px;
+		height: auto;
+		border-radius: 50%;
+	}
+
+
+
+.menu__item a{
+	text-decoration: none;
+	color: #6d6e71;
+ }
+ .menu__item a.active{
+	font-weight: 700;
+	color: blue;
+ }

@@ -3,19 +3,24 @@ import Ava from "./Ava/Ava"
 import s from "./Post.module.css"
 import PostDescription from "./postDescription/PostDescription"
 
-function Post(props) {
-	return (
-		<div>
-		<div className={s.postImageWrapper}><img className={s.postImage} src={props.image} alt="" /></div>
-			<div className={s.postAva}>
-				<Ava avaUser={props.avaUser}/>
-				<p>{props.name}</p>
+
+class Post extends React.Component{
+
+	render() {
+		return (
+			<div>
+			<div className={s.postImageWrapper}><img className={s.postImage} src={this.props.image} alt="" /></div>
+				<div className={s.postAva}>
+					<Ava avaUser={this.props.avaUser}/>
+					<p>{this.props.name}</p>
+				</div>
+				<PostDescription text={this.props.text}/>
+				<hr/>
 			</div>
-			<PostDescription text={props.text}/>
-			<hr/>
-		</div>
-	)
+		)
+	}
 }
+
 
 export default Post
 

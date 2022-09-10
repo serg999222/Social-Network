@@ -2,32 +2,29 @@ import React from "react";
 import {addPostActionCreator} from '../../../../../redux/newsPage-reduser'
 import {updateNewPostTextCreator} from '../../../../../redux/newsPage-reduser'
 import PostForm from '../PostForm/PostForm'
+import {connect} from 'react-redux'
 
 
 
-
-
-function PostFormContainer(props) {
-
-	let state = props.store.getState()
-
-	let addPostt = (e) => {	
-		e.preventDefault()
-		props.store.dispatch(addPostActionCreator())
-		
-	}
-
-	let onPostChange = (text)=>{
-		props.store.dispatch(updateNewPostTextCreator(text))
-	}
-	
-
-
-
-	return (
-				<PostForm newPostText={state.newsPage.newPostText}  addPostt={addPostt} onPostChange={onPostChange} />
-	)
+let mapStateToProps = (state) => {
+ return 	{newPostText: state.newsPage.newPostText}	
 }
 
-export default PostFormContainer
+let mapDispatchToprops = (dispatch) => {
+return {
+	addPostt: () => {
+		dispatch(addPostActionCreator())
+	},
+	onPostChange: (text)=>{
+		
+		dispatch(updateNewPostTextCreator(text))
+	}
+}
+}
+
+let PostformContainer = connect(mapStateToProps, mapDispatchToprops) (PostForm)
+
+
+
+export default PostformContainer
 

@@ -1,5 +1,6 @@
 .nav{
 	grid-area: n;
+	margin-left: 50px;
 	}
 
 	.menu__list{
@@ -37,7 +38,7 @@
 	 .myAccounteLink{
 		border-radius: 5px;
 		display: flex;
-		background-image: url(https://www.gettyimages.pt/gi-resources/images/Homepage/Hero/PT/PT_hero_42_153645159.jpg);
+		background-image: url("../../img/backgroundForProfile.jpg");
 
 	 }
 	 .myAccounteLink a{
@@ -46,11 +47,19 @@
 	 }
 
 	 .myAccounteLink img{
+	width: 100%;
+	 }
+
+	 .avatarImg{
 		position: relative;
 		left: -40px;
-		max-width: 100px;
+		width: 100px;
+		height: 75px;
 		margin: 20px;
-		
 		border-radius: 50%;
 		border: 5px solid rgb(240, 233, 233);
+		overflow: hidden;
+	 }
+	 .text{
+		color: aliceblue;
 	 }

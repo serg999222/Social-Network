@@ -1,70 +1,128 @@
+import reqestsApi from '../api/api'
+import { createSlice } from '@reduxjs/toolkit'
 
-const ADD_FREND = 'ADD_FREND'
-const REMOVE_FREND = 'REMOVE_FREND'
-const SET_USERS = 'SET_USERS'
+const frendsPageReduser = createSlice({
+	name: 'frends',
+	initialState: {
+		users: [
 
+		],
+		pageNum: 1,
+		isLoading: false
+	},
+	reducers: {
+		addFrend(state, action) {
+			state.users.map(user => {
+				if (action.payload === user.id) {
+					return { ...user, isFrends: true }
+				}
+			})
+		},
+		removeFrend(state, action) {
+			state.users.map(user => {
+				if (action.payload === user.id) {
+					return { ...user, isFrends: false }
+				}
+			})
+		},
 
+		setUsers(state, action) {
+			state.users = action.payload
+		},
 
+		nextPage(state, action) {
+			state.pageNum = action.payload +1
+		},
 
-let initialState = {
-	users: [
-		// {id:'1', isFrends: true, firstName: 'Oleh', lastName: 'Ivanov', country: 'Ukraine', ava:'' },
-		// {id:'2', isFrends: true, firstName: 'Serhii', lastName: 'Vaschenko', country: 'Ukraine', ava:'' },
-		// {id:'3', isFrends: true, firstName: 'Yuliia', lastName: 'Peremoga', country: 'Kanada', ava:'' },
-		// {id:'4', isFrends: false, firstName: 'Nazar', lastName: 'Sergiyovich', country: 'Germany', ava:'' },
-		// {id:'5', isFrends: true, firstName: 'Svitlana', lastName: 'Yarova', country: 'Ukraine', ava:'' },
+		prevPage(state, action) {
+			state.pageNum = action.payload - 1
+		},
 
-	]
-}
-
-
-
-const frendsPageReduser = (state = initialState, action) => {
-	
-	switch(action.type){
-
-		case SET_USERS:{
-			
-			// return {
-			// 	...state,
-			// 	users: [...state.users, ...action.users]
-			// }
-			return {
-				...state, users: action.users
-			}
-			
+		toglePreloader(state, action) {
+			state.isLoading = action.payload
 		}
 
-		case ADD_FREND: 
-			return {
-				...state,
-				users: state.users.map(user => {
-					if(action.userId === user.id){
-						return { ...user, isFrends: true}
-					}
-					return user
-				})
-			}
+		// export const toglePreloader = (isTrue) => ({ type: TOGGLE_PRELOAD, isTrue })
 
-		case REMOVE_FREND:
-			return {
-				...state,
-				users: state.users.map(user => {
-					if(action.userId === user.id){
-						return { ...user, isFrends: false}
-					}
-					return user
-				})
-			}	
-		
-			default: return state
 	}
+})
 
+
+
+export const getUsers = (pageNum) => {
+
+	return (dispatch) => {
+		dispatch(toglePreloader(true))
+		reqestsApi.setUsersApi(pageNum)
+			.then(data => {
+				dispatch(toglePreloader(false))
+				let users = data
+				dispatch(setUsers(users))
+			})
+	}
 }
 
-export const addFrendAC = (userId) => ({type:ADD_FREND, userId})
-export const removeFrendAC = (userId) => ({type:REMOVE_FREND, userId})
-export const setUsersAC = (users) => ({type:SET_USERS, users})
+export const getNextPage = (num) => {
+	return (dispatch) => {
+		dispatch(nextPage(num))
+		let h = num + 1
+		dispatch(toglePreloader(true))
+		reqestsApi.setUsersApi(h)
+			.then(data => {
+				dispatch(toglePreloader(false))
+				let users = data
+				dispatch(setUsers(users))
+			})
+	}
+}
 
-export default frendsPageReduser
+export const getPrevPage = (num) => {
+	return (dispatch) => {
+		dispatch(prevPage(num))
+		let h = num - 1
+		dispatch(toglePreloader(true))
+		reqestsApi.setUsersApi(h)
+			.then(data => {
+				dispatch(toglePreloader(false))
+				let users = data
+				dispatch(setUsers(users))
+			})
+	}
+}
+
+export const getRemoveFrend = (userId, pageNum) => {
+	return (dispatch) => {
+		dispatch(removeFrend(userId))
+		let userIdReqest = userId
+		reqestsApi.addFrendApi(userIdReqest, false)
+			.then(() => {
+				reqestsApi.setUsersApi(pageNum).then(data => {
+					let users = data
+					dispatch(setUsers(users))
+				})
+			})
+	}
+}
+
+export const getAddFrend = (userId, pageNum) => {
+	return (dispatch) => {
+		dispatch(addFrend(userId))
+		let userIdReqest = userId
+		reqestsApi.addFrendApi(userIdReqest, true)
+			.then(() => {
+				reqestsApi.setUsersApi(pageNum).then(data => {
+
+					let users = data
+					dispatch(setUsers(users))
+
+				})
+			})
+	}
+}
+
+
+
+export default frendsPageReduser.reducer
+
+export const {addFrend,removeFrend, setUsers, nextPage, prevPage, toglePreloader} = frendsPageReduser.actions
 

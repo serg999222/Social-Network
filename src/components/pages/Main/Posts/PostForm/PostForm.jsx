@@ -1,38 +1,46 @@
 import React from "react";
 import s from "./PostForm.module.css"
+import { useForm } from 'react-hook-form'
 
 
 
 
 
-class PostForm extends React.Component{
+class PostForm extends React.Component {
 
 
 
-	addPostt = (e) => {	
-		e.preventDefault()
-		this.props.addPostt()
-		
+	addPostt = (text) => {
+		this.props.addPostt(text)
+
 	}
 
-	onPostChange = (e) => {
-		
-		let text = e.target.value
-		this.props.onPostChange(text)
-		
-	}
+	render() {
 
-	render(){
 		return (
-			<form>
-				<input onChange={this.onPostChange}  value={this.props.newPostText}/> <br />
-				<button onClick={this.addPostt} type='submit'>Add Post</button>
-			</form>
-)
+			<FormForPostForm addPostt={this.addPostt} />
+		)
 	}
 }
 
 
 
 export default PostForm
+
+const FormForPostForm = (props) => {
+	const { register, handleSubmit, watch, formState: { errors }, reset } = useForm()
+	const onSubmit = data => {
+
+		let text = data.postText
+		props.addPostt(text)
+		reset()
+
+	}
+	return (
+		<form onSubmit={handleSubmit(onSubmit)}>
+			<input {...register('postText')} /> <br />
+			<button type='submit'>Add Post</button>
+		</form>
+	)
+}
 

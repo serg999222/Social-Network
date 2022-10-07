@@ -9,6 +9,27 @@ background-color: rgb(37, 159, 183);
 	
 }
 
+.sercherContainer img{
+	
+	
+}
+
+
+
+.prevArrow{
+	transform: rotate(180deg);
+	margin: 0 10px;
+	border-radius: 50%;
+	width: 20px;
+	height: auto;
+}
+.nextArrow{
+	margin: 0 10px;
+	border-radius: 50%;
+	width: 20px;
+	height: auto;
+}
+
 .input{
 	display: block;
 	height: 40px;
@@ -31,7 +52,7 @@ background-color: rgb(37, 159, 183);
 	border-right: 2px solid black;
 }
 .frends img{
-		width: 50px;
+		width: 90px;
 		height: auto;
 		border-radius: 50%;
 }
@@ -43,7 +64,7 @@ background-color: rgb(37, 159, 183);
 
 	}
 	.users img{
-		width: 50px;
+		width: 90px;
 		height: auto;
 		border-radius: 50%;
 	}
@@ -58,3 +79,5 @@ background-color: rgb(37, 159, 183);
 	font-weight: 700;
 	color: blue;
  }
+
+

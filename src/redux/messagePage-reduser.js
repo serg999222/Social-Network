@@ -1,48 +1,68 @@
+import {createSlice} from '@reduxjs/toolkit'
+import axios from 'axios'
+import reqestsApi from '../api/api'
 
-
-const ADD_NEW_MESSAGE = 'ADD-NEW-MESSAGE'
-const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT'
-
-export const addMessageActionCreator = (text) => ({type: ADD_NEW_MESSAGE, text})
-//export const updateNewMessageTextActionCreator = (text) => ({type: UPDATE_NEW_MESSAGE_TEXT, text})
-export const updateNewMessageTextActionCreator = (text) => {
-	return {type: UPDATE_NEW_MESSAGE_TEXT, text}
-}
-
-
-let initialState =  {
-	userDialogs:[
-		{ id: '1', name: 'Sasha' },
-		{ id: '2', name: 'Sveta'},
-		{ id: '3', name: 'Julia' },
-		{ id: '4', name: 'Nazar' }
-	],
-	messages: [
-		{ id: '1', text: 'Hy' },
-		{ id: '2', text: 'How are you?' },
-		{ id: '3', text: 'by!' }
-	],
-	messageTextNow: ''
-
-}
-
-const messagePageReduser = (state =initialState, action) => {
-	switch(action.type){
-		case UPDATE_NEW_MESSAGE_TEXT:
-			return{ ...state,
-			messageTextNow : action.text
-		}
+const messagePageReduser = createSlice({
+	name: 'message',
+	initialState:  {
+			userDialogs:[
 			
-		case ADD_NEW_MESSAGE:
-			return{
-				...state,
-				messages : [{id:0 , text:action.text},...state.messages],
-				messageTextNow : ''
+			],
+			messages: [
+				{myMessages: [], dialogsUserMessages: []}
+			],
+				
+		},
+		reducers:{
+	
+			addMessageActionCreator(state, action){
+				state.messages.myMessages.unshift({myMessagesId: 1, myMessage: action.payload})
+			},
+		
+			setUsersDialogs(state, action) {
+			
+				state.userDialogs = action.payload
+			},
+			setMessageToUser(state,action){
+				state.messages = []
+				state.messages.unshift(action.payload)
 			}
+		}
+})
 
-		default: return state
+
+export const getAddMyMessageForUser = (userIdReqest, obj) =>{
+	return (dispatch) => {
+		reqestsApi.addMyMessageForUser(userIdReqest, obj).then(response => {
+			let data = response.data
+			dispatch(addMessageActionCreator(data))
+		})
 	}
-
 }
+ 
 
-export default messagePageReduser
+// export const getUsersDialogs = () => {
+
+// 	return (dispatch) => {	
+		
+// 		axios('http://localhost:3001/users').then(response => {
+// 			let data = response.data
+// 			dispatch(setUsersDialogs(data))
+// 		})	
+
+
+
+// 		// reqestsApi.setUsersDialogsApi()
+// 		// 	.then(data => {			
+// 		// 		let users = data
+// 		// 		dispatch(setUsersDialogs(users))
+// 		// 	})
+// 	}
+// }
+
+export default messagePageReduser.reducer
+
+export const { addMessageActionCreator,setUsersDialogs, setMessageToUser} = messagePageReduser.actions
+
+
+

@@ -19,31 +19,85 @@
 
 .message__wrapper{
 	display: grid;
-	grid-template-columns: 5fr 7fr;
+	grid-template-columns: 2fr 5fr 5fr;
 }
 
 .users{
 
 	list-style: none;
-	border: 1px solid black;
+	
 }
 .users a{
 	text-decoration: none;
+	
 }
 
 .messages{
 	list-style: none;
-	border: 1px solid black;
+	border-left: 1px solid black;
 	
 }
 .addMessage{
 
 }
 .writeMessage{
+	align-items: center;
 	display: block;
-	width: 500px;
-	resize: vertical;
+	width:auto;
+	height: 100px;
+	margin-left: 43%;
+	border-radius: 10px;
 }
 .submitMessage{
+	padding: 0 10px;
+	font-size: 20px;
+	font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+	font-weight: bold;
+	margin-top: 20px;
+	border-radius: 10px;
+	box-shadow: 2px 2px;
+
 	
+}
+.submitMessage:hover{
+	color: rgb(63, 89, 117);
+	transition: all 0.5s; 
+	
+}
+.buttomContainer{
+	position: relative;
+	max-width: 100px;
+	margin-left: 45%;
+}
+
+.underline{
+
+	
+}
+
+.underline::before{
+	margin: 0 0 4px 0;
+	padding: 0;
+	content: '';
+	bottom: 0;
+	left: 25%;
+	position: absolute;
+	width: 50%;
+	height: 1px;
+	background-color:rgb(29, 30, 34) ;
+	transition: 0.2s;
+	transform: scaleX(0);
+}
+.underline:hover::before{
+	transform: scaleX(1);
+}
+
+.errors{
+	height: 20px;
+	font-size: 12px;
+	color: red;
+	padding: 0;
+}
+.errors p{
+	margin: 0;
 }

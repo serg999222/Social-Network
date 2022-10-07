@@ -1,8 +1,9 @@
 import React from "react";
 import {addPostActionCreator} from '../../../../../redux/newsPage-reduser'
-import {updateNewPostTextCreator} from '../../../../../redux/newsPage-reduser'
 import PostForm from '../PostForm/PostForm'
 import {connect} from 'react-redux'
+import { compose } from "redux";
+import { WidthRedirect } from "../../../../../hoc/widthRedirect";
 
 
 
@@ -12,19 +13,17 @@ let mapStateToProps = (state) => {
 
 let mapDispatchToprops = (dispatch) => {
 return {
-	addPostt: () => {
-		dispatch(addPostActionCreator())
-	},
-	onPostChange: (text)=>{
+	addPostt: (text) => {
 		
-		dispatch(updateNewPostTextCreator(text))
-	}
+		dispatch(addPostActionCreator(text))
+	},
+	
 }
 }
 
-let PostformContainer = connect(mapStateToProps, mapDispatchToprops) (PostForm)
+let PostformContainer = compose(connect(mapStateToProps, mapDispatchToprops))  (PostForm)
 
-
+//, WidthRedirect
 
 export default PostformContainer
 

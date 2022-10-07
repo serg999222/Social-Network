@@ -9,7 +9,7 @@
 	 max-width: 100px;
 	
 	 margin-right: 10px;
-	 margin-left: 200px;
+	 margin-left: 250px;
 	 border: 5px solid #231F20;
 	 border-radius: 50px;
 	 
@@ -27,5 +27,15 @@
 		align-self: center;
 		border-radius: 10px;
 		font-size: 18px;
+		/* background-color: rgb(100, 94, 94); */
 		
+		
+	}
+
+	.login{
+	position: relative;
+	right: 5%;
+	top:33%;
+	color: aliceblue;
+	
 	}

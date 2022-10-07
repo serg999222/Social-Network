@@ -1,5 +1,55 @@
 .container{
 	font-size: 50px;
 	font-weight: 700;
-	background-color: chocolate;
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+	background-image: url('../../../img/background2.jpg');
+	
+}
+
+.avatar{
+	max-width: 250px;
+	max-height: 250px;
+	position: relative;
+	left: 10px;
+	z-index: 1;
+	margin:0 20px 0 0;
+	overflow: hidden;
+	border-radius: 50%;
+	border: 10px solid rgb(240, 233, 233);
+}
+
+.title{
+	margin: 0;
+	margin-right: 10px;
+	text-align: start;
+	color: aliceblue;
+	font-family: monospace;
+}
+.styleLineContainer{
+	position: relative;
+}
+.styleLine{
+	background-color: black;
+	opacity: 0.8;
+	position: absolute;
+	width: 100%;
+	bottom: 30px;
+	color: aliceblue;
+	text-align: center;
+
+}
+
+.avatarImg{
+	width: 100%;
+
+}
+
+.userProfessionContainer{
+	font-size: 20px;
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.userProfessionContainerLink{
+	cursor: pointer;
+	font-size: 20px;
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
 }

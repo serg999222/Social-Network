@@ -1,7 +1,8 @@
 import React from "react";
 import {connect} from 'react-redux'
 import Main from './Main'
-
+import {WidthRedirect} from '../../../hoc/widthRedirect'
+import { compose } from "redux";
 
 
 let mapStateToProps = (state) => {
@@ -15,7 +16,7 @@ let mapDispatchToProps = (dispatch) => {
 
 }
 
-const MainContainer = connect (mapStateToProps, mapDispatchToProps) (Main)
+const MainContainer = compose(connect (mapStateToProps), WidthRedirect)  (Main)
 
 export default MainContainer
 

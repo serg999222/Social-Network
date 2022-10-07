@@ -1,0 +1,41 @@
+.formLogin{
+	display: flex;
+	flex-direction: column;
+}
+.loginTitle{
+	text-align: center;
+}
+
+.formLogin input{
+	margin: 0 auto;
+
+}
+
+.buttom{
+	padding: 5px 15px;
+	margin: 0 auto 10px;
+	width: fit-content;
+	border: none;
+	border-bottom: 1px solid blue;
+	box-shadow: 2px 2px  rgb(90, 84, 84);
+	background-color: rgb(227, 232, 237);
+}
+
+.buttom:hover{
+	background-color: rgb(197, 202, 206);
+	transition: all 0.5s;
+	cursor: pointer;
+}
+
+.errors{
+	height: 20px;
+	font-size: 12px;
+	color: red;
+	padding: 0;
+}
+.input{
+	margin-bottom: 5px;
+}
+.errors p{
+	margin: 0;
+}

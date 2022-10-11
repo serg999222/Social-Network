@@ -8,7 +8,7 @@ import PostformContainer from './Posts/PostForm/PostFormContainer'
 
 function Main(props) {
 
-	let post = props.posts.map( (itemPost, ) => <Post  image = {itemPost.image} name = {itemPost.name} text={itemPost.text} avaUser={itemPost.avaUser}/>)
+	let post = props.posts.map( (itemPost) => <Post key={itemPost.id} image = {itemPost.image} name = {itemPost.name} text={itemPost.text} avaUser={itemPost.avaUser}/>)
 
 	return (
 		<main className={s.main}>

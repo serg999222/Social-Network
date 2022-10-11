@@ -29,7 +29,7 @@ class FrendsContainer extends React.Component {
 	frendsListt() {
 		
 		let clearFrendlist = this.props.users.filter(user => user.isFrends ? user : '')
-		let frendsList = clearFrendlist.map((user, i) => <FrendsList 
+		let frendsList = clearFrendlist.map((user, i) => <FrendsList key={ user.id}
 		pageNum={this.props.pageNum} 
 		photo={user.userAva ? user.userAva : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT83_4nYbepKSRjeX5LgJcF8imUzSjkC49iXg&usqp=CAU'}
 		removeFrend={this.props.removeFrend} 
@@ -40,7 +40,7 @@ class FrendsContainer extends React.Component {
 	userListt() {
 		
 		let clearUserlist = this.props.users.filter(user => !user.isFrends ? user : '')
-		let userList = clearUserlist.map(user => <UsersList 
+		let userList = clearUserlist.map(user => <UsersList key={ user.id}
 		pageNum={this.props.pageNum}  
 		photo={user.userAva ? user.userAva : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT83_4nYbepKSRjeX5LgJcF8imUzSjkC49iXg&usqp=CAU'} 
 		addFrend={this.props.addFrend} 

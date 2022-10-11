@@ -16,8 +16,6 @@ const instanse = axios.create({
  const reqestsApi = {
 
 	setUserAvaApi(userAva, userIdReqest){
-	
-		
 		return instanse.patch(`users/${userIdReqest}` , {userAva},  { "Content-Type": "application/json" })
 		
 	},

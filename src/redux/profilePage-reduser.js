@@ -12,9 +12,9 @@ const profilePageReduser = createSlice({
 
 
 	reducers:{
-		setProfile(state, action){		
+		setProfile(state, action){	
 			state.profilUser = action.payload
-			state.profession = action.payload.profession.profession
+			 state.profession =  action.payload.profession? action.payload.profession.profession: 'Profession'
 		},
 		setProfession(state,action){
 			state.profession = action.payload.profession.profession
@@ -38,7 +38,8 @@ export const getUserAva = (file, ownerId) => {
 	return (dispatch) =>{
 		reqestsApi.setUserAvaApi(file, ownerId)
 		.then(() => {
-			reqestsApi.setProfileApi(ownerId).then(response => {				
+			reqestsApi.setProfileApi(ownerId).then(response => {	
+						
 				dispatch(setProfile(response.data))				
 			})
 		})
@@ -49,7 +50,8 @@ export const getUserProfession = (userIdReqest, profession,changeEditModeFalse) 
 	return (dispatch) => {
 	
 		reqestsApi.UserProfessionApi(userIdReqest,profession).then(response => {
-			const data = response.data				
+			const data = response.data
+			
 			dispatch(setProfession(data))
 			changeEditModeFalse(false)
 		})

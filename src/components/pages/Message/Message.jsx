@@ -10,7 +10,6 @@ import { useForm } from 'react-hook-form'
 
 
 function Message(props) {
-	console.log(props)
 	useEffect(() => {
 		props.setUsersDialogs(props.myDialogs)
 	}, [])
